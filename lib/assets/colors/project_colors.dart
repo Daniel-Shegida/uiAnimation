@@ -8,7 +8,10 @@ abstract class ProjectColors {
   static const Color cardColorBackground = _rgbWhite;
   static const Color buttonColorBackground = _rgbLightBlue;
   static const Color sliderColor = _rgbGreen;
-  static const Color appBackground = _rgbLightGrey;
+  static const Color shadowColor = _rgbDarkGreyTr;
+  static const Color appBackground = Colors.grey;
+  // static const Color appBackground = _rgbLightGrey;
+
 
 
 
@@ -19,6 +22,7 @@ abstract class ProjectColors {
   static const Color _rgbGreen = Color.fromRGBO(170, 255, 130, 1);
   static const Color _rgbRed = Color.fromRGBO(230, 73, 45, 1);
   static const Color _rgbLightGrey = Color.fromRGBO(249, 250, 252, 1);
+  static const Color _rgbDarkGreyTr = Color.fromRGBO(77, 93, 250, 0.3);
 
 
 

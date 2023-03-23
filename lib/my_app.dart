@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hard_ui_impl_first_task/assets/themes.dart';
 import 'package:hard_ui_impl_first_task/hard_task/screen/hard_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,10 +14,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           useInheritedMediaQuery: true,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            // textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-          ),
+          theme: ProjectThemes.lightTheme,
           home: child,
         );
       },
@@ -26,8 +24,9 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key,}) : super(key: key);
-
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -35,5 +34,5 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context) => HardScreen();
+  Widget build(BuildContext context) => const HardScreen();
 }

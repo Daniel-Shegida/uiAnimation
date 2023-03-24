@@ -5,34 +5,34 @@ import 'package:hard_ui_impl_first_task/assets/colors/project_colors.dart';
 abstract class ProjectThemes {
   /// Светлая тема проекта
   static ThemeData lightTheme = ThemeData.light().copyWith(
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       titleLarge: TextStyle(
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         color: ProjectColors.textColorPrimary,
-        fontSize: 28,
+        fontSize: 28.sp,
       ),
       titleMedium: TextStyle(
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         color: ProjectColors.textColorPrimary,
-        fontSize: 26,
+        fontSize: 26.sp,
       ),
       titleSmall: TextStyle(
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         color: ProjectColors.textColorPrimary,
-        fontSize: 20,
+        fontSize: 20.sp,
       ),
       labelMedium: TextStyle(
         fontFamily: 'Montserrat',
         color: ProjectColors.textColorTitles,
-        fontSize: 15,
+        fontSize: 15.sp,
       ),
       bodyMedium: TextStyle(
         fontFamily: 'Montserrat',
         color: ProjectColors.textColorPrimary,
-        fontSize: 15,
+        fontSize: 15.sp,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

@@ -7,9 +7,9 @@ abstract class ProjectColors {
   static const Color textColorTitles = _rgbRed;
   static const Color cardColorBackground = _rgbWhite;
   static const Color buttonColorBackground = _rgbLightBlue;
+  static const Color sliderColorBackground = _rgbLightBlue;
   static const Color sliderColor = _rgbGreen;
   static const Color shadowColor = _rgbDarkGreyTr;
-  // static const Color appBackground = Colors.grey;
   static const Color appBackground = _rgbLightGrey;
 
 

@@ -8,7 +8,6 @@ abstract class ProjectStyles {
     fontWeight: FontWeight.bold,
     color: ProjectColors.textColorPrimary,
     fontSize: 20,
-
   );
 
   static  TextStyle boldBlack26Montserrat = TextStyle(
@@ -18,7 +17,7 @@ abstract class ProjectStyles {
     fontSize: 26,
   );
 
-  static  TextStyle boldBlack28Montserrat = TextStyle(
+  static  TextStyle? boldBlack28Montserrat = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.bold,
     color: ProjectColors.textColorPrimary,
@@ -37,7 +36,7 @@ abstract class ProjectStyles {
     fontSize: 15,
   );
 
-  static  TextStyle semiBoldBlue15Montserrat = TextStyle(
+  static  TextStyle? semiBoldBlue15Montserrat = TextStyle(
     fontFamily: 'Montserrat',
     color: ProjectColors.textColorButtons,
     fontSize: 15,

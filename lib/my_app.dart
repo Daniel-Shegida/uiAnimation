@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      designSize: const Size(411, 823),
       useInheritedMediaQuery: true,
       builder: (_, child) {
         return MaterialApp(

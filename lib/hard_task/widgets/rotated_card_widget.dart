@@ -5,9 +5,9 @@ import 'dart:math' as math;
 
 class RotatedCardWidget extends StatelessWidget {
   const RotatedCardWidget(
-      {required this.child, this.height, this.width, this.rotation, Key? key})
+      {this.child, this.height, this.width, this.rotation, Key? key})
       : super(key: key);
-  final Widget child;
+  final Widget? child;
   final double? width;
   final double? height;
   final double? rotation;

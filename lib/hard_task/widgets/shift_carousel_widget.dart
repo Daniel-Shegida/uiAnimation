@@ -2,7 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/entity/shift_info.dart';
+import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/click_bouncing.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/shift_card_widget.dart';
+
+double _shadowValue = 20.h;
 
 /// карусель с изображениями и индикатором
 class ShiftsCarouselWidget extends StatelessWidget {
@@ -10,14 +13,13 @@ class ShiftsCarouselWidget extends StatelessWidget {
       {required this.shifts,
       required this.height,
       required this.width,
-        this.rotation,
-        Key? key})
+      this.rotation,
+      Key? key})
       : super(key: key);
   final List<ShiftInfo> shifts;
   final double height;
   final double width;
   final double? rotation;
-
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,16 @@ class ShiftsCarouselWidget extends StatelessWidget {
             return Center(
               child: Padding(
                 padding: EdgeInsets.only(right: 10.w),
-                child: _ShiftsWidget(
-                  statusShift: shift.shiftInfoStatus,
-                  shiftName: shift.shiftInfoName,
-                  shiftSubName: shift.shiftInfoSubName,
-                  messagesAmount: shift.messagesAmount,
-                  width: width,
-                  height: height, rotation: rotation ,
+                child: ClickBouncingAnimationWidget(
+                  child: _ShiftsWidget(
+                    statusShift: shift.shiftInfoStatus,
+                    shiftName: shift.shiftInfoName,
+                    shiftSubName: shift.shiftInfoSubName,
+                    messagesAmount: shift.messagesAmount,
+                    width: width,
+                    height: height,
+                    rotation: rotation,
+                  ),
                 ),
               ),
             );
@@ -56,10 +61,10 @@ class _ShiftsWidget extends StatelessWidget {
       required this.shiftName,
       required this.shiftSubName,
       required this.messagesAmount,
-        required this.height,
-        required this.width,
-        this.rotation,
-        Key? key})
+      required this.height,
+      required this.width,
+      this.rotation,
+      Key? key})
       : super(key: key);
   final String statusShift;
   final String shiftName;
@@ -69,7 +74,6 @@ class _ShiftsWidget extends StatelessWidget {
   final double width;
   final double? rotation;
 
-
   @override
   Widget build(BuildContext context) {
     return ShiftCardWidget(
@@ -78,8 +82,7 @@ class _ShiftsWidget extends StatelessWidget {
       shiftSubName: shiftSubName,
       messagesAmount: messagesAmount,
       width: width,
-      height: height - 20.h,
-
+      height: height - _shadowValue,
     );
   }
 }

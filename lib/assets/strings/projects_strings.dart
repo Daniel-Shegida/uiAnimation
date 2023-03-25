@@ -15,6 +15,8 @@ abstract class ProjectStrings {
 
   static const String myLessons = 'Мои смены';
 
+  static const String waiting = 'Тут Скоро появится крутое расписание';
+
   static String getChatMessageButtonString(int amount){
     return 'Чат отряда ($amount сообщ.)';
 }

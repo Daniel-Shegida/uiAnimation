@@ -24,7 +24,12 @@ abstract class ProjectColors {
   static const Color _rgbLightGrey = Color.fromRGBO(249, 250, 252, 1);
   static const Color _rgbDarkGreyTr = Color.fromRGBO(77, 93, 250, 0.3);
 
-
-
-
+  static Color getColorFromController(double progress){
+    return  Color.fromRGBO(
+      60,
+      (progress * 255).round(),
+      175,
+      1,
+    );
+  }
 }

@@ -3,16 +3,47 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/assets/colors/project_colors.dart';
 import 'package:hard_ui_impl_first_task/assets/res/project_icon.dart';
 import 'package:hard_ui_impl_first_task/assets/strings/projects_strings.dart';
+import 'package:hard_ui_impl_first_task/hard_task/screen/second_screen.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/entity/balance_enums.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/project_dummy_info.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/Icon_card_widget.dart';
+import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/changing_color.dart';
+import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/spinning.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/balances_card_widget.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/button_card_widget.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/progress_card_widget.dart';
+import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/shift_carousel_widget.dart';
 
-class HardScreen extends StatelessWidget {
+const int timeOfNavigation = 3;
+
+class HardScreen extends StatefulWidget {
   const HardScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HardScreen> createState() => _HardScreenState();
+}
+
+class _HardScreenState extends State<HardScreen> with TickerProviderStateMixin {
+  bool isVisible = true;
+
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +79,16 @@ class HardScreen extends StatelessWidget {
             SizedBox(
               height: 12.h,
             ),
-            const _ActivityWidget(),
+            Hero(
+              tag: 'Hero Page',
+              child: GestureDetector(
+                onTap: _heroTap,
+                child: _ActivityWidget(
+                  controller: _controller,
+                  isVisible: isVisible,
+                ),
+              ),
+            ),
             SizedBox(
               height: 15.h,
             ),
@@ -75,6 +115,34 @@ class HardScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _heroTap() {
+    _navigateToSecondPage(context, _controller.value);
+    setState(() {
+      isVisible = !isVisible;
+    });
+  }
+
+  void _navigateToSecondPage(
+    BuildContext context,
+    double currentColor,
+  ) async {
+    await Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: const Duration(seconds: timeOfNavigation),
+        reverseTransitionDuration: const Duration(seconds: timeOfNavigation),
+        pageBuilder: (_, __, ___) => SecindScreen(
+          currentColor: currentColor,
+        ),
+      ),
+    );
+    Future.delayed(const Duration(seconds: timeOfNavigation), () {
+      setState(() {
+        isVisible = !isVisible;
+      });
+    });
   }
 }
 
@@ -115,11 +183,13 @@ class _ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonCardWidget(
-      buttonName: ProjectStrings.profile,
-      width: 112.92.w,
-      height: 89.56.h,
-      rotation: 27.76,
+    return SpinningContainer(
+      child: ButtonCardWidget(
+        buttonName: ProjectStrings.profile,
+        width: 112.92.w,
+        height: 89.56.h,
+        rotation: 27.76,
+      ),
     );
   }
 }
@@ -141,16 +211,29 @@ class _AchievementWidget extends StatelessWidget {
 }
 
 class _ActivityWidget extends StatelessWidget {
-  const _ActivityWidget({Key? key}) : super(key: key);
+  const _ActivityWidget(
+      {required this.controller, required this.isVisible, Key? key})
+      : super(key: key);
+  final AnimationController controller;
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
-    return IconCardWidget(
-      cardName: ProjectDummyInfo.dummyActivityInfo,
-      iconPath: ProjectIcons.iArrow,
-      width: 298.44.w,
-      height: 65.59.h,
-      rotation: -0.25,
+    return ChangingShadowColorContainer(
+      controller: controller,
+      child: isVisible
+          ? IconCardWidget(
+              cardName: ProjectDummyInfo.dummyActivityInfo,
+              iconPath: ProjectIcons.iArrow,
+              width: 298.44.w,
+              height: 65.59.h,
+              rotation: -0.25,
+            )
+          : RotatedCardWidget(
+              width: 298.44.w,
+              height: 65.59.h,
+              rotation: -0.25,
+            ),
     );
   }
 }
@@ -195,4 +278,27 @@ class _MyLessonsWidget extends StatelessWidget {
       rotation: 2.32,
     );
   }
+}
+
+class MaterialTransparentRoute<T> extends PageRoute<T>
+    with MaterialRouteTransitionMixin<T> {
+  MaterialTransparentRoute({
+    required this.builder,
+    this.maintainState = true,
+    bool fullscreenDialog = false,
+  })  : assert(builder != null),
+        assert(maintainState != null),
+        assert(fullscreenDialog != null),
+        super(fullscreenDialog: fullscreenDialog);
+
+  final WidgetBuilder builder;
+
+  @override
+  Widget buildContent(BuildContext context) => builder(context);
+
+  @override
+  bool get opaque => false;
+
+  @override
+  final bool maintainState;
 }

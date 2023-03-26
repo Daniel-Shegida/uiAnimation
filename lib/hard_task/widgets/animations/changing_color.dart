@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/assets/colors/project_colors.dart';
 
+/// контейнер с внешним контроллером изменяющий его цвет тени
 class ChangingShadowColorContainer extends StatefulWidget {
   const ChangingShadowColorContainer(
       {required this.child, required this.controller, Key? key})

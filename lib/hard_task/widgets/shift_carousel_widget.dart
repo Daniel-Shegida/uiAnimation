@@ -7,7 +7,7 @@ import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/click_bounc
 import 'package:hard_ui_impl_first_task/hard_task/widgets/shift_card_widget.dart';
 
 
-/// карусель с изображениями и индикатором
+/// карусель смен проекта
 class ShiftsCarouselWidget extends StatelessWidget {
   const ShiftsCarouselWidget(
       {required this.shifts,

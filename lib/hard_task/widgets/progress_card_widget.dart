@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/assets/colors/project_colors.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 
+/// виджет карточки с тайтломи прогресс баром
 class ProgressCardWidget extends StatelessWidget {
   const ProgressCardWidget({
     required this.title,

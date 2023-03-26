@@ -1,3 +1,4 @@
+/// все строковые ресурсы для дизайна
 abstract class ProjectStrings {
   static const String balanceInfo = 'Баланс';
 

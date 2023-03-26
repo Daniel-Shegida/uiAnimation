@@ -4,6 +4,7 @@ import 'package:hard_ui_impl_first_task/assets/strings/projects_strings.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/entity/balance_enums.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 
+/// виджет баланса с кнопкой
 class BalancesCardWidget extends StatelessWidget {
   const BalancesCardWidget(
       {required this.curency,

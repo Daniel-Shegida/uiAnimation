@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+/// цвета проекта
 abstract class ProjectColors {
   static const Color textColorPrimary = _rgbDarkBlue;
   static const Color textColorButtons = _rgbBlue;

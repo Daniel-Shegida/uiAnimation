@@ -5,6 +5,7 @@ import 'package:hard_ui_impl_first_task/assets/res/project_icon.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/project_dummy_info.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 
+/// виджет карточки с текстом и иконкой
 class IconCardWidget extends StatelessWidget {
   const IconCardWidget(
       {required this.cardName,

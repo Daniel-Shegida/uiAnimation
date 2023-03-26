@@ -4,6 +4,7 @@ import 'package:hard_ui_impl_first_task/hard_task/utils/util_info.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/changing_color.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 
+/// второй экран задания
 class SecondScreen extends StatefulWidget {
   const SecondScreen({required this.currentColor, Key? key}) : super(key: key);
   final double currentColor;
@@ -27,6 +28,7 @@ class _SecondScreenState extends State<SecondScreen>
       vsync: this,
     )..repeat();
 
+    // после окончания анимация hero смена флага для появления текста
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         _visible = !_visible;
@@ -44,24 +46,40 @@ class _SecondScreenState extends State<SecondScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Hero(
-          tag: UtilInfo.heroTag,
-          child: ChangingShadowColorContainer(
-            controller: _controller,
-            child: RotatedCardWidget(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: AnimatedOpacity(
-                opacity: _visible ? 1.0 : 0.0,
-                duration: const Duration(milliseconds: 500),
-                child: Center(
-                    child: Text(
-                  ProjectStrings.waiting,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge,
-                )),
-              ),
-            ),
+        child: _HeroWidget(
+          controller: _controller,
+          isVisible: _visible,
+        ),
+      ),
+    );
+  }
+}
+
+class _HeroWidget extends StatelessWidget {
+  const _HeroWidget(
+      {required this.controller, required this.isVisible, Key? key})
+      : super(key: key);
+  final AnimationController controller;
+  final bool isVisible;
+
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+      tag: UtilInfo.heroTag,
+      child: ChangingShadowColorContainer(
+        controller: controller,
+        child: RotatedCardWidget(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: AnimatedOpacity(
+            opacity: isVisible ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 500),
+            child: Center(
+                child: Text(
+              ProjectStrings.waiting,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge,
+            )),
           ),
         ),
       ),

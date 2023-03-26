@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// контейнер с встроенным контроллером обрабатывающий его нажатие
 class ClickBouncingAnimationWidget extends StatefulWidget {
   const ClickBouncingAnimationWidget({required this.child, Key? key})
       : super(key: key);

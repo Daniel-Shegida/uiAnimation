@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/assets/colors/project_colors.dart';
 
+/// тема проекта (кнопка + стили текста)
 abstract class ProjectThemes {
   /// Светлая тема проекта
   static ThemeData lightTheme = ThemeData.light().copyWith(

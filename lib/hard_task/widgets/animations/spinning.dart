@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+/// контейнер с встроенным контроллером вращяющий его вокруг оси
 class SpinningContainer extends StatefulWidget {
   const SpinningContainer({required this.child, Key? key}) : super(key: key);
   final Widget child;

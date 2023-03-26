@@ -16,7 +16,7 @@ import 'package:hard_ui_impl_first_task/hard_task/widgets/progress_card_widget.d
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/shift_carousel_widget.dart';
 
-
+/// основной экран проекта
 class HardScreen extends StatefulWidget {
   const HardScreen({Key? key}) : super(key: key);
 
@@ -25,8 +25,11 @@ class HardScreen extends StatefulWidget {
 }
 
 class _HardScreenState extends State<HardScreen> with TickerProviderStateMixin {
+  /// флаг прозрачности текста в контейнере
+  // нужен для hero анимации
   bool isVisible = true;
 
+  /// контроллер регулирующий анимацию цвета
   late final AnimationController _controller;
 
   @override
@@ -116,14 +119,17 @@ class _HardScreenState extends State<HardScreen> with TickerProviderStateMixin {
     );
   }
 
+  /// обработка нажатия на контейнер с герроем
   void _heroTap() {
-    _navigateToSecondPage(context, _controller.value);
+    _handleNavigationToSecondPage(context, _controller.value);
     setState(() {
       isVisible = !isVisible;
     });
   }
 
-  void _navigateToSecondPage(
+  /// навигация на 2 экран и переключение флага после навигации и ее анимации
+  // стоит ли разделить на 2 функции?
+  void _handleNavigationToSecondPage(
     BuildContext context,
     double currentColor,
   ) async {
@@ -145,6 +151,7 @@ class _HardScreenState extends State<HardScreen> with TickerProviderStateMixin {
   }
 }
 
+/// SafeArea с фоном проекта
 class _SafeAreaWithBackground extends StatelessWidget {
   const _SafeAreaWithBackground({required this.child, Key? key})
       : super(key: key);
@@ -161,6 +168,7 @@ class _SafeAreaWithBackground extends StatelessWidget {
   }
 }
 
+/// виджет денежного баланса
 class _MoneyBalanceWidget extends StatelessWidget {
   const _MoneyBalanceWidget({Key? key}) : super(key: key);
 
@@ -177,6 +185,7 @@ class _MoneyBalanceWidget extends StatelessWidget {
   }
 }
 
+/// виджет баланса кристалов
 class _CrystalBalanceWidget extends StatelessWidget {
   const _CrystalBalanceWidget({Key? key}) : super(key: key);
 
@@ -193,6 +202,7 @@ class _CrystalBalanceWidget extends StatelessWidget {
   }
 }
 
+/// виджет профиля
 class _ProfileWidget extends StatelessWidget {
   const _ProfileWidget({Key? key}) : super(key: key);
 
@@ -209,6 +219,7 @@ class _ProfileWidget extends StatelessWidget {
   }
 }
 
+/// виджет достижений
 class _AchievementWidget extends StatelessWidget {
   const _AchievementWidget({Key? key}) : super(key: key);
 
@@ -216,8 +227,8 @@ class _AchievementWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProgressCardWidget(
       title: ProjectStrings.lvlOfAchievement,
-      currentValue: 3,
-      maxValue: 5,
+      currentValue: ProjectDummyInfo.dummyLvlOfAchievement,
+      maxValue: ProjectDummyInfo.dummyMaxLvlOfAchievement,
       width: 302.w,
       height: 122.h,
       rotation: 4.58,
@@ -225,11 +236,13 @@ class _AchievementWidget extends StatelessWidget {
   }
 }
 
+/// виджет активностей с переливающимся фоном и навигацией
 class _ActivityWidget extends StatelessWidget {
   const _ActivityWidget(
       {required this.controller, required this.isVisible, Key? key})
       : super(key: key);
   final AnimationController controller;
+  /// флаг отрисовывающий либо весь виджет или только карточку
   final bool isVisible;
 
   @override
@@ -253,6 +266,7 @@ class _ActivityWidget extends StatelessWidget {
   }
 }
 
+/// виджет карусели смен
 class _ShiftsWidget extends StatelessWidget {
   const _ShiftsWidget({Key? key}) : super(key: key);
 
@@ -267,6 +281,7 @@ class _ShiftsWidget extends StatelessWidget {
   }
 }
 
+/// виджет секций
 class _SectionWidget extends StatelessWidget {
   const _SectionWidget({Key? key}) : super(key: key);
 
@@ -281,6 +296,7 @@ class _SectionWidget extends StatelessWidget {
   }
 }
 
+/// виджет моих уроков
 class _MyLessonsWidget extends StatelessWidget {
   const _MyLessonsWidget({Key? key}) : super(key: key);
 

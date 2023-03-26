@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 
+/// виджет нажимаемой карточки с текстом посередине
 class ButtonCardWidget extends StatelessWidget {
   const ButtonCardWidget(
       {required this.buttonName,

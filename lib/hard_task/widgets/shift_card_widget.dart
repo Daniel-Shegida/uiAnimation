@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/assets/strings/projects_strings.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 
+
+/// виджет смены проекта
 class ShiftCardWidget extends StatelessWidget {
   const ShiftCardWidget({
     required this.statusShift,

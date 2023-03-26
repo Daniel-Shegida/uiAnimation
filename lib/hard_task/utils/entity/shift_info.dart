@@ -1,3 +1,4 @@
+/// сущность с информацией смены
 class ShiftInfo {
   final String shiftInfoStatus;
   final String shiftInfoName;

@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/assets/colors/project_colors.dart';
 import 'dart:math' as math;
 
+/// виджет-контейнер стандартизованной карточки проекта, поддерживающий его
+/// наклонение
 class RotatedCardWidget extends StatelessWidget {
   const RotatedCardWidget(
       {this.child, this.height, this.width, this.rotation, Key? key})

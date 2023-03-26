@@ -25,8 +25,9 @@ class ButtonCardWidget extends StatelessWidget {
         width: width,
         rotation: rotation,
         child: Center(
-            child: Text(buttonName,
-                style: Theme.of(context).textTheme.titleSmall)),
+          child:
+              Text(buttonName, style: Theme.of(context).textTheme.titleSmall),
+        ),
       ),
     );
   }

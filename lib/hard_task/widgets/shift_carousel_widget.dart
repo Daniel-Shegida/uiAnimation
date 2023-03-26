@@ -2,10 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/entity/shift_info.dart';
+import 'package:hard_ui_impl_first_task/hard_task/utils/util_info.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/click_bouncing.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/shift_card_widget.dart';
 
-double _shadowValue = 20.h;
 
 /// карусель с изображениями и индикатором
 class ShiftsCarouselWidget extends StatelessWidget {
@@ -82,7 +82,7 @@ class _ShiftsWidget extends StatelessWidget {
       shiftSubName: shiftSubName,
       messagesAmount: messagesAmount,
       width: width,
-      height: height - _shadowValue,
+      height: height - UtilInfo.shadowSizeValue,
     );
   }
 }

@@ -39,7 +39,7 @@ class IconCardWidget extends StatelessWidget {
             ),
             SvgIcon(
               size: 22.w,
-              icon: SvgIconData(ProjectIcons.iArrow),
+              icon: const SvgIconData(ProjectIcons.iArrow),
             ),
           ],
         ),

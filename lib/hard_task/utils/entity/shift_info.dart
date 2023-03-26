@@ -4,6 +4,6 @@ class ShiftInfo {
   final String shiftInfoSubName;
   final int messagesAmount;
 
-  const ShiftInfo(this.shiftInfoStatus, this.shiftInfoName, this.shiftInfoSubName,
-      this.messagesAmount);
+  const ShiftInfo(this.shiftInfoStatus, this.shiftInfoName,
+      this.shiftInfoSubName, this.messagesAmount);
 }

@@ -15,14 +15,12 @@ abstract class ProjectDummyInfo {
 
   static const String dummyShiftSubInfo = 'Корпус №3       Отряд №2';
 
-  static const ShiftInfo dummyShift = ShiftInfo(
-      dummyShiftStatus, dummyShiftInfo, dummyShiftSubInfo, 6);
+  static const ShiftInfo dummyShift =
+      ShiftInfo(dummyShiftStatus, dummyShiftInfo, dummyShiftSubInfo, 6);
 
   static const List<ShiftInfo> dummyShifts = [
     dummyShift,
     dummyShift,
     dummyShift
   ];
-
-
 }

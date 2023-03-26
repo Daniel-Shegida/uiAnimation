@@ -38,7 +38,7 @@ class BalancesCardWidget extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: onPressed,
-              child: Container(
+              child: SizedBox(
                 width: width! * 0.72,
                 child: const Center(
                   child: (Text(

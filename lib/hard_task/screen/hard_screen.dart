@@ -6,6 +6,7 @@ import 'package:hard_ui_impl_first_task/assets/strings/projects_strings.dart';
 import 'package:hard_ui_impl_first_task/hard_task/screen/second_screen.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/entity/balance_enums.dart';
 import 'package:hard_ui_impl_first_task/hard_task/utils/project_dummy_info.dart';
+import 'package:hard_ui_impl_first_task/hard_task/utils/util_info.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/Icon_card_widget.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/changing_color.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/animations/spinning.dart';
@@ -15,7 +16,6 @@ import 'package:hard_ui_impl_first_task/hard_task/widgets/progress_card_widget.d
 import 'package:hard_ui_impl_first_task/hard_task/widgets/rotated_card_widget.dart';
 import 'package:hard_ui_impl_first_task/hard_task/widgets/shift_carousel_widget.dart';
 
-const int timeOfNavigation = 3;
 
 class HardScreen extends StatefulWidget {
   const HardScreen({Key? key}) : super(key: key);
@@ -47,71 +47,70 @@ class _HardScreenState extends State<HardScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ProjectColors.cardColorBackground,
-      body: Padding(
-        padding:
-            EdgeInsets.only(left: 15.w, right: 12.w, top: 28.h, bottom: 17.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 40.h,
-            ),
-            Row(
-              children: [
-                const _MoneyBalanceWidget(),
-                SizedBox(
-                  width: 16.w,
-                ),
-                const _ProfileWidget(),
-              ],
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                _AchievementWidget(),
-              ],
-            ),
-            SizedBox(
-              height: 12.h,
-            ),
-            Hero(
-              tag: 'Hero Page',
-              child: GestureDetector(
-                onTap: _heroTap,
-                child: _ActivityWidget(
-                  controller: _controller,
-                  isVisible: isVisible,
+    return _SafeAreaWithBackground(
+      child: Scaffold(
+        backgroundColor: ProjectColors.appBackground,
+        body: Padding(
+          padding: EdgeInsets.only(
+              left: 15.w, right: 12.w, top: 15.h, bottom: 17.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const _MoneyBalanceWidget(),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                  const _ProfileWidget(),
+                ],
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  _AchievementWidget(),
+                ],
+              ),
+              SizedBox(
+                height: 12.h,
+              ),
+              Hero(
+                tag: UtilInfo.heroTag,
+                child: GestureDetector(
+                  onTap: _heroTap,
+                  child: _ActivityWidget(
+                    controller: _controller,
+                    isVisible: isVisible,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-            const _ShiftsWidget(),
-            SizedBox(
-              height: 27.h,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const _CrystalBalanceWidget(),
-                Column(
-                  children: [
-                    const _SectionWidget(),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    const _MyLessonsWidget(),
-                  ],
-                )
-              ],
-            ),
-          ],
+              SizedBox(
+                height: 15.h,
+              ),
+              const _ShiftsWidget(),
+              SizedBox(
+                height: 20.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const _CrystalBalanceWidget(),
+                  Column(
+                    children: [
+                      const _SectionWidget(),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      const _MyLessonsWidget(),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -131,18 +130,34 @@ class _HardScreenState extends State<HardScreen> with TickerProviderStateMixin {
     await Navigator.push(
       context,
       PageRouteBuilder(
-        transitionDuration: const Duration(seconds: timeOfNavigation),
-        reverseTransitionDuration: const Duration(seconds: timeOfNavigation),
-        pageBuilder: (_, __, ___) => SecindScreen(
+        transitionDuration: const Duration(seconds: UtilInfo.timeOfNavigation),
+        reverseTransitionDuration: const Duration(seconds: UtilInfo.timeOfNavigation),
+        pageBuilder: (_, __, ___) => SecondScreen(
           currentColor: currentColor,
         ),
       ),
     );
-    Future.delayed(const Duration(seconds: timeOfNavigation), () {
+    Future.delayed(const Duration(seconds: UtilInfo.timeOfNavigation), () {
       setState(() {
         isVisible = !isVisible;
       });
     });
+  }
+}
+
+class _SafeAreaWithBackground extends StatelessWidget {
+  const _SafeAreaWithBackground({required this.child, Key? key})
+      : super(key: key);
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: ProjectColors.appBackground,
+      child: SafeArea(
+        child: child,
+      ),
+    );
   }
 }
 
@@ -278,27 +293,4 @@ class _MyLessonsWidget extends StatelessWidget {
       rotation: 2.32,
     );
   }
-}
-
-class MaterialTransparentRoute<T> extends PageRoute<T>
-    with MaterialRouteTransitionMixin<T> {
-  MaterialTransparentRoute({
-    required this.builder,
-    this.maintainState = true,
-    bool fullscreenDialog = false,
-  })  : assert(builder != null),
-        assert(maintainState != null),
-        assert(fullscreenDialog != null),
-        super(fullscreenDialog: fullscreenDialog);
-
-  final WidgetBuilder builder;
-
-  @override
-  Widget buildContent(BuildContext context) => builder(context);
-
-  @override
-  bool get opaque => false;
-
-  @override
-  final bool maintainState;
 }

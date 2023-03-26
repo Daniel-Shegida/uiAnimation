@@ -17,16 +17,6 @@ class ChangingShadowColorContainer extends StatefulWidget {
 class _ChangingShadowColorContainerState
     extends State<ChangingShadowColorContainer> with TickerProviderStateMixin {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return _SpinningContainer(
       controller: widget.controller,
@@ -54,9 +44,6 @@ class _SpinningContainer extends AnimatedWidget {
             blurRadius: 12.r,
           ),
         ],
-        borderRadius: BorderRadius.all(
-          Radius.circular(20.r),
-        ),
       ),
       child: child,
     );

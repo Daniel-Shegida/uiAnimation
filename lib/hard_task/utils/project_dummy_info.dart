@@ -4,7 +4,7 @@ import 'package:hard_ui_impl_first_task/hard_task/utils/entity/shift_info.dart';
 abstract class ProjectDummyInfo {
   static const int dummyLvlOfAchievement = 5;
 
-  static const int dummyMaxLvlOfAchievement = 5;
+  static const int dummyMaxLvlOfAchievement = 7;
 
   static const int dummyMoneyBalanceInfo = 1500;
 
